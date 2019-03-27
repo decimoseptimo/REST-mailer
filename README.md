@@ -47,3 +47,19 @@ router.post('/new-endpoint', function (req, res){
 
 ##### Different domains
 If POSTing from a different domain, add the domain(s) to the `allowedOrigins` array. This is in compliance with [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policy. Otherwise the browser will fail to load the endpoint and its console may show `No 'Access-Control-Allow-Origin' header is present ` errors.
+
+## Testing
+To test from localhost you can issue the following commands in the terminal.
+
+##### Root entrypoint
+```
+curl http://localhost:9980/api/v1
+```
+
+Returns the confirmation string `/`
+
+##### Contact form entrypoint
+```
+curl -d "name=value1&email=value2@example.com&message=value3" -X POST http://localhost:9980/api/v1/contact-form
+```
+Returns a JSON string returned by the mailgun service. It contains a success or failure message.
